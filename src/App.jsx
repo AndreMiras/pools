@@ -2,13 +2,11 @@ import React from 'react';
 import './App.css';
 import Container from './components/Container';
 
-const Headers = () => {
-  return (
-    <header className="App-header">
-      <p>UniswapROI</p>
-    </header>
-  );
-};
+const Headers = () => (
+  <header className="App-header">
+    <p>UniswapROI</p>
+  </header>
+);
 
 const App = () => {
   return (
