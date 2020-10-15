@@ -1,18 +1,14 @@
 import React from 'react';
 import './App.css';
-import Container from './components/Container';
+import Navbar from './components/Navbar';
+import ContentWrapper from './components/ContentWrapper';
 
-const Headers = () => (
-  <header className="App-header">
-    <p>UniswapROI</p>
-  </header>
-);
 
 const App = () => {
   return (
-    <div className="App">
-      <Headers />
-      <Container />
+    <div className="App" id="wrapper">
+      <Navbar />
+      <ContentWrapper />
     </div>
   );
 };
