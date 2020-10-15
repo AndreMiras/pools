@@ -1,6 +1,5 @@
 import React from 'react';
 import 'startbootstrap-sb-admin-2/css/sb-admin-2.min.css'
-import { Navbar as ReactNavbar } from 'react-bootstrap'
 import Content from './Content';
 
 
