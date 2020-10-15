@@ -10,7 +10,8 @@ before_script:
 test:
   stage: test
   script:
-    - CI=true npm test
+    - CI=true make lint
+    - CI=true make test
 
 pages:
   stage: deploy
