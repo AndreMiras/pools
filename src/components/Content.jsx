@@ -5,7 +5,7 @@ import Container from './Container';
 
 const apiURL = "https://uniswaproi.herokuapp.com/portfolio/";
 
-const fetchPortfolio = address => onFetch => {
+const fetchPortfolio = (address, onFetch, onError) => {
   const url = apiURL + address;
   fetch(url)
     .then(res => res.json())
@@ -14,21 +14,32 @@ const fetchPortfolio = address => onFetch => {
         onFetch(result)
       },
       error => {
-        console.error(error);
+        onError(error);
       }
     );
 };
 
 const Content = () => {
   const [dataDict, setDataDict] = useState();
+  const [loading, setLoading] = useState(false);
 
   const onAddress = address => {
-    fetchPortfolio(address)(setDataDict);
+    const onFetch = result => {
+      setLoading(false);
+      setDataDict(result);
+    };
+    const onError = error => {
+      setLoading(false);
+      setDataDict({ "error": error.toString() });
+    };
+
+    setLoading(true);
+    fetchPortfolio(address, onFetch, onError);
   };
 
   return (
     <div id="content">
-      <Nav onAddress={ onAddress } />
+      <Nav onAddress={ onAddress } loading={ loading } />
       <Container dataDict={ dataDict } />
     </div>
   );

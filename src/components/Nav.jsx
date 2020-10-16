@@ -4,16 +4,17 @@ import { NavDropdown } from 'react-bootstrap'
 import 'startbootstrap-sb-admin-2/css/sb-admin-2.min.css'
 
 
-const AddressForm = ({ onAddress }) => {
+const AddressForm = ({ onAddress, loading }) => {
   const [address, setAddress] = useState();
+  const icon = loading ? "spinner" : "search";
 
   return (
     <form className="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
       <div className="input-group">
         <input type="text" className="form-control bg-light border-0 small" placeholder="Ethereum address" aria-label="Address" aria-describedby="basic-addon2" onChange={(e) => {setAddress(e.target.value)}}/>
         <div className="input-group-append">
-          <button className="btn btn-primary" type="button" onClick={() => { onAddress(address) }}>
-            <FontAwesomeIcon className="fa-sm" icon="search" />
+          <button className={`btn btn-primary`} type="button" onClick={() => { onAddress(address) }}>
+            <FontAwesomeIcon className="fa-sm" icon={ icon } pulse={ loading } />
           </button>
         </div>
       </div>
@@ -21,7 +22,7 @@ const AddressForm = ({ onAddress }) => {
   );
 };
 
-const Nav = ({ onAddress }) => {
+const Nav = ({ onAddress, loading }) => {
   return (
     <nav className="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
@@ -29,7 +30,7 @@ const Nav = ({ onAddress }) => {
         <i className="fa fa-bars"></i>
       </button>
 
-      <AddressForm onAddress={ onAddress } />
+      <AddressForm onAddress={ onAddress } loading={ loading } />
 
       <ul className="navbar-nav ml-auto">
 
