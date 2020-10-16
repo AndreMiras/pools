@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 
 
-const Container = () => {
+const Container = ({dataDict}) => {
   return (
     <ReactContainer fluid>
       <div className="d-sm-flex align-items-center justify-content-between mb-4">
@@ -14,6 +14,11 @@ const Container = () => {
           <Button variant="primary" size="sm">
             <FontAwesomeIcon icon="download" /> Generate Report
           </Button>
+      </div>
+      <div className="row">
+        <pre>
+          {JSON.stringify(dataDict, null, 2)}
+        </pre>
       </div>
     </ReactContainer>
   );

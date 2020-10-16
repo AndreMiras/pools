@@ -1,10 +1,27 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { NavDropdown } from 'react-bootstrap'
 import 'startbootstrap-sb-admin-2/css/sb-admin-2.min.css'
 
 
-const Nav = () => {
+const AddressForm = ({ onAddress }) => {
+  const [address, setAddress] = useState();
+
+  return (
+    <form className="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+      <div className="input-group">
+        <input type="text" className="form-control bg-light border-0 small" placeholder="Ethereum address" aria-label="Address" aria-describedby="basic-addon2" onChange={(e) => {setAddress(e.target.value)}}/>
+        <div className="input-group-append">
+          <button className="btn btn-primary" type="button" onClick={() => { onAddress(address) }}>
+            <FontAwesomeIcon className="fa-sm" icon="search" />
+          </button>
+        </div>
+      </div>
+    </form>
+  );
+};
+
+const Nav = ({ onAddress }) => {
   return (
     <nav className="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
@@ -12,16 +29,7 @@ const Nav = () => {
         <i className="fa fa-bars"></i>
       </button>
 
-      <form className="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-        <div className="input-group">
-          <input type="text" className="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2" />
-          <div className="input-group-append">
-            <button className="btn btn-primary" type="button">
-              <FontAwesomeIcon className="fa-sm" icon="search" />
-            </button>
-          </div>
-        </div>
-      </form>
+      <AddressForm onAddress={ onAddress } />
 
       <ul className="navbar-nav ml-auto">
 
