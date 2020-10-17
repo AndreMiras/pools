@@ -13,12 +13,10 @@ EtherscanTokenLink.propTypes = {
   text: PropTypes.string.isRequired,
 };
 
-const TokenPropTypes = {
-  symbol: PropTypes.string,
-  price: PropTypes.number,
+const TokenPropTypes = PropTypes.shape({
+  symbol: PropTypes.string.isRequired,
   balance: PropTypes.number,
-  balance_usd: PropTypes.number,
-};
+});
 
 const Pair = ({ pairDict }) => {
   const token0 = pairDict.tokens[0];

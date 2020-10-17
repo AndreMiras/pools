@@ -5,8 +5,7 @@ import { Container as ReactContainer, Button } from 'react-bootstrap';
 import 'startbootstrap-sb-admin-2/css/sb-admin-2.min.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { getPortfolioUrl } from '../utils/api';
-import Pairs from './Pairs';
-import Pair from './Pair';
+import Portfolio from './Portfolio';
 
 const Download = ({ address }) => (
   <Button variant="primary" size="sm" href={getPortfolioUrl(address)}>
@@ -20,7 +19,7 @@ Download.propTypes = {
 };
 
 const Container = ({ dataDict }) => {
-  const pairs = dataDict ? <Pairs dataDict={dataDict} /> : null;
+  const portfolio = dataDict ? <Portfolio dataDict={dataDict} /> : null;
   const download = dataDict ? <Download address={dataDict.address} /> : null;
   return (
     <ReactContainer fluid>
@@ -29,17 +28,12 @@ const Container = ({ dataDict }) => {
         { download }
       </div>
       <div className="row">
-        { pairs }
+        { portfolio }
       </div>
     </ReactContainer>
   );
 };
-Container.propTypes = {
-  dataDict: PropTypes.shape({
-    address: PropTypes.string,
-    pairs: PropTypes.arrayOf(Pair),
-  }),
-};
+Container.propTypes = Portfolio.propTypes;
 Container.defaultProps = {
   dataDict: null,
 };

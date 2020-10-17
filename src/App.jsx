@@ -9,13 +9,11 @@ import { fas } from '@fortawesome/free-solid-svg-icons'
 library.add(fas)
 
 
-const App = () => {
-  return (
-    <div className="App" id="wrapper">
-      <Navbar />
-      <ContentWrapper />
-    </div>
-  );
-};
+const App = () => (
+  <div className="App" id="wrapper">
+    <Navbar />
+    <ContentWrapper />
+  </div>
+);
 
 export default App;
