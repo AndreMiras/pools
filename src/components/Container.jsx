@@ -34,8 +34,5 @@ const Container = ({ dataDict }) => {
   );
 };
 Container.propTypes = Portfolio.propTypes;
-Container.defaultProps = {
-  dataDict: null,
-};
 
 export default Container;

@@ -1,30 +1,34 @@
 import React, { useState } from 'react';
 import 'startbootstrap-sb-admin-2/css/sb-admin-2.min.css';
-import Nav from './Nav';
 import Container from './Container';
+import ErrorDialog from './ErrorDialog';
+import Nav from './Nav';
 import { fetchPortfolio } from '../utils/api';
 
 const Content = () => {
   const [dataDict, setDataDict] = useState(null);
+  const [errorDetail, setErrorDetail] = useState(null);
   const [loading, setLoading] = useState(false);
 
   const onAddress = (address) => {
-    const onFetch = (result) => {
+    const onOk = (data) => {
       setLoading(false);
-      setDataDict(result);
+      setDataDict(data);
     };
-    const onError = (error) => {
+    const onNotOk = (data) => {
       setLoading(false);
-      setDataDict({ error: error.toString() });
+      setErrorDetail(data);
     };
 
     setLoading(true);
-    fetchPortfolio(address, onFetch, onError);
+    fetchPortfolio(address, onOk, onNotOk);
   };
   const container = dataDict ? <Container dataDict={dataDict} /> : null;
+  const errorDialog = errorDetail ? <ErrorDialog detail={errorDetail.detail} /> : null;
 
   return (
     <div id="content">
+      {errorDialog}
       <Nav onAddress={onAddress} loading={loading} />
       {container}
     </div>
