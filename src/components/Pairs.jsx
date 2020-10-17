@@ -3,6 +3,7 @@ import 'startbootstrap-sb-admin-2/css/sb-admin-2.min.css';
 import {
   Table, Accordion, Card, Button,
 } from 'react-bootstrap';
+import { number, func } from 'prop-types';
 
 const DebugResponse = ({ dataDict }) => (
   <Accordion>
