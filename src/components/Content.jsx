@@ -1,22 +1,21 @@
 import React, { useState } from 'react';
-import 'startbootstrap-sb-admin-2/css/sb-admin-2.min.css'
+import 'startbootstrap-sb-admin-2/css/sb-admin-2.min.css';
 import Nav from './Nav';
 import Container from './Container';
 import { fetchPortfolio } from '../utils/api';
-
 
 const Content = () => {
   const [dataDict, setDataDict] = useState();
   const [loading, setLoading] = useState(false);
 
-  const onAddress = address => {
-    const onFetch = result => {
+  const onAddress = (address) => {
+    const onFetch = (result) => {
       setLoading(false);
       setDataDict(result);
     };
-    const onError = error => {
+    const onError = (error) => {
       setLoading(false);
-      setDataDict({ "error": error.toString() });
+      setDataDict({ error: error.toString() });
     };
 
     setLoading(true);
@@ -25,11 +24,10 @@ const Content = () => {
 
   return (
     <div id="content">
-      <Nav onAddress={ onAddress } loading={ loading } />
-      <Container dataDict={ dataDict } />
+      <Nav onAddress={onAddress} loading={loading} />
+      <Container dataDict={dataDict} />
     </div>
   );
 };
 
 export default Content;
-

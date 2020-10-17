@@ -18,6 +18,9 @@ start: install
 lint: install
 	yarn lint
 
+format: install
+	yarn format
+
 intl: install
 	yarn intl
 
