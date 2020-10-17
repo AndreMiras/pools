@@ -2,22 +2,8 @@ import React, { useState } from 'react';
 import 'startbootstrap-sb-admin-2/css/sb-admin-2.min.css'
 import Nav from './Nav';
 import Container from './Container';
+import { fetchPortfolio } from '../utils/api';
 
-const apiURL = "https://uniswaproi.herokuapp.com/portfolio/";
-
-const fetchPortfolio = (address, onFetch, onError) => {
-  const url = apiURL + address;
-  fetch(url)
-    .then(res => res.json())
-    .then(
-      result => {
-        onFetch(result)
-      },
-      error => {
-        onError(error);
-      }
-    );
-};
 
 const Content = () => {
   const [dataDict, setDataDict] = useState();
