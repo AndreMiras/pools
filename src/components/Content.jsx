@@ -21,11 +21,12 @@ const Content = () => {
     setLoading(true);
     fetchPortfolio(address, onFetch, onError);
   };
+  const container = dataDict ? <Container dataDict={dataDict} /> : null;
 
   return (
     <div id="content">
       <Nav onAddress={onAddress} loading={loading} />
-      <Container dataDict={dataDict} />
+      {container}
     </div>
   );
 };
