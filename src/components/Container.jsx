@@ -3,10 +3,12 @@ import { Container as ReactContainer } from 'react-bootstrap'
 import { Button } from 'react-bootstrap'
 import 'startbootstrap-sb-admin-2/css/sb-admin-2.min.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import Pairs from './Pairs';
 
 
 
 const Container = ({dataDict}) => {
+  const pairs = dataDict ? <Pairs dataDict={ dataDict } /> : null;
   return (
     <ReactContainer fluid>
       <div className="d-sm-flex align-items-center justify-content-between mb-4">
@@ -16,9 +18,7 @@ const Container = ({dataDict}) => {
           </Button>
       </div>
       <div className="row">
-        <pre>
-          {JSON.stringify(dataDict, null, 2)}
-        </pre>
+        { pairs }
       </div>
     </ReactContainer>
   );
