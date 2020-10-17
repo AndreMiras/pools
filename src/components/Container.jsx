@@ -33,6 +33,14 @@ const Container = ({ dataDict }) => {
     </ReactContainer>
   );
 };
-Container.propTypes = Pairs.propTypes;
+Container.propTypes = {
+  dataDict: PropTypes.shape({
+    address: PropTypes.string,
+    pairs: PropTypes.string,
+  }),
+};
+Container.defaultProps = {
+  dataDict: null,
+};
 
 export default Container;
