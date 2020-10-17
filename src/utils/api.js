@@ -8,11 +8,8 @@ const fetchPortfolio = (address, onOk, onNotOk) => {
   const url = getPortfolioUrl(address);
   fetch(url)
     .then((response) => {
-      if (response.ok) {
-        response.json().then((data) => onOk(data));
-      } else {
-        response.json().then((data) => onNotOk(data));
-      }
+      const callback = response.ok ? onOk : onNotOk;
+      response.json().then((data) => callback(data));
     });
 };
 
