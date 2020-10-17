@@ -5,7 +5,7 @@ import Container from './Container';
 import { fetchPortfolio } from '../utils/api';
 
 const Content = () => {
-  const [dataDict, setDataDict] = useState();
+  const [dataDict, setDataDict] = useState(null);
   const [loading, setLoading] = useState(false);
 
   const onAddress = (address) => {

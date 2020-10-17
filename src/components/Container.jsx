@@ -6,6 +6,7 @@ import 'startbootstrap-sb-admin-2/css/sb-admin-2.min.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { getPortfolioUrl } from '../utils/api';
 import Pairs from './Pairs';
+import Pair from './Pair';
 
 const Download = ({ address }) => (
   <Button variant="primary" size="sm" href={getPortfolioUrl(address)}>
@@ -36,7 +37,7 @@ const Container = ({ dataDict }) => {
 Container.propTypes = {
   dataDict: PropTypes.shape({
     address: PropTypes.string,
-    pairs: PropTypes.string,
+    pairs: PropTypes.arrayOf(Pair),
   }),
 };
 Container.defaultProps = {
