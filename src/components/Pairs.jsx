@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import 'startbootstrap-sb-admin-2/css/sb-admin-2.min.css';
 import {
   Table, Accordion, Card, Button,
@@ -22,12 +23,30 @@ const DebugResponse = ({ dataDict }) => (
     </Card>
   </Accordion>
 );
+DebugResponse.propTypes = {
+  dataDict: PropTypes.shape({
+    address: PropTypes.string,
+    pairs: PropTypes.string,
+  }).isRequired,
+};
 
 const EtherscanTokenLink = ({ address, text }) => {
   const url = `https://etherscan.io/token/${address}`;
   return (
     <a href={url}>{ text }</a>
   );
+};
+EtherscanTokenLink.propTypes = {
+  address: PropTypes.string.isRequired,
+  text: PropTypes.string.isRequired,
+};
+
+const Token = () => (null);
+Token.propTypes = {
+  symbol: PropTypes.string,
+  price: PropTypes.number,
+  balance: PropTypes.number,
+  balance_usd: PropTypes.number,
 };
 
 const Pair = ({ pairDict }) => {
@@ -66,9 +85,21 @@ const Pair = ({ pairDict }) => {
     </tr>
   );
 };
+Pair.propTypes = {
+  pairDict: PropTypes.shape({
+    contract_address: PropTypes.string.isRequired,
+    owner_balance: PropTypes.number.isRequired,
+    pair_symbol: PropTypes.string.isRequired,
+    share: PropTypes.number.isRequired,
+    balance_usd: PropTypes.number.isRequired,
+    tokens: PropTypes.arrayOf(Token).isRequired,
+  }).isRequired,
+};
 
 const Pairs = ({ dataDict }) => {
-  const pairs = dataDict.pairs.map((pairDict) => <Pair pairDict={pairDict} key={pairDict.contract_address} />);
+  const pairs = dataDict.pairs.map(
+    (pairDict) => <Pair pairDict={pairDict} key={pairDict.contract_address} />,
+  );
   return (
     <div>
       <Table>
@@ -88,6 +119,12 @@ const Pairs = ({ dataDict }) => {
       <DebugResponse dataDict={dataDict} />
     </div>
   );
+};
+Pairs.propTypes = {
+  dataDict: PropTypes.shape({
+    address: PropTypes.string,
+    pairs: PropTypes.string,
+  }).isRequired,
 };
 
 export default Pairs;

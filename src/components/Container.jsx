@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Container as ReactContainer, Button } from 'react-bootstrap';
 
 import 'startbootstrap-sb-admin-2/css/sb-admin-2.min.css';
@@ -13,6 +14,9 @@ const Download = ({ address }) => (
     Download
   </Button>
 );
+Download.propTypes = {
+  address: PropTypes.string.isRequired,
+};
 
 const Container = ({ dataDict }) => {
   const pairs = dataDict ? <Pairs dataDict={dataDict} /> : null;
@@ -29,5 +33,6 @@ const Container = ({ dataDict }) => {
     </ReactContainer>
   );
 };
+Container.propTypes = Pairs.propTypes;
 
 export default Container;

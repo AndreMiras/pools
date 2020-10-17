@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { NavDropdown } from 'react-bootstrap';
 import 'startbootstrap-sb-admin-2/css/sb-admin-2.min.css';
@@ -20,11 +21,15 @@ const AddressForm = ({ onAddress, loading }) => {
     </form>
   );
 };
+AddressForm.propTypes = {
+  onAddress: PropTypes.func.isRequired,
+  loading: PropTypes.bool.isRequired,
+};
 
 const Nav = ({ onAddress, loading }) => (
   <nav className="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
-    <button id="sidebarToggleTop" className="btn btn-link d-md-none rounded-circle mr-3">
+    <button id="sidebarToggleTop" className="btn btn-link d-md-none rounded-circle mr-3" type="button">
       <i className="fa fa-bars" />
     </button>
 
@@ -45,5 +50,9 @@ const Nav = ({ onAddress, loading }) => (
 
   </nav>
 );
+Nav.propTypes = {
+  onAddress: PropTypes.func.isRequired,
+  loading: PropTypes.bool.isRequired,
+};
 
 export default Nav;
