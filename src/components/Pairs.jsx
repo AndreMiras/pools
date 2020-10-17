@@ -5,30 +5,6 @@ import {
   Table, Accordion, Card, Button,
 } from 'react-bootstrap';
 
-const DebugResponse = ({ dataDict }) => (
-  <Accordion>
-    <Card>
-      <Card.Header>
-        <Accordion.Toggle as={Button} variant="link" eventKey="0">
-          See full JSON response
-        </Accordion.Toggle>
-      </Card.Header>
-      <Accordion.Collapse eventKey="0" animation="false">
-        <Card.Body>
-          <pre>
-            {JSON.stringify(dataDict, null, 2)}
-          </pre>
-        </Card.Body>
-      </Accordion.Collapse>
-    </Card>
-  </Accordion>
-);
-DebugResponse.propTypes = {
-  dataDict: PropTypes.shape({
-    address: PropTypes.string,
-    pairs: PropTypes.string,
-  }).isRequired,
-};
 
 const EtherscanTokenLink = ({ address, text }) => {
   const url = `https://etherscan.io/token/${address}`;
@@ -41,8 +17,7 @@ EtherscanTokenLink.propTypes = {
   text: PropTypes.string.isRequired,
 };
 
-const Token = () => (null);
-Token.propTypes = {
+const TokenPropTypes = {
   symbol: PropTypes.string,
   price: PropTypes.number,
   balance: PropTypes.number,
@@ -92,9 +67,38 @@ Pair.propTypes = {
     pair_symbol: PropTypes.string.isRequired,
     share: PropTypes.number.isRequired,
     balance_usd: PropTypes.number.isRequired,
-    tokens: PropTypes.arrayOf(Token).isRequired,
+    tokens: PropTypes.arrayOf(TokenPropTypes).isRequired,
   }).isRequired,
 };
+
+const PairsPropTypes = {
+  dataDict: PropTypes.shape({
+    address: PropTypes.string,
+    pairs: PropTypes.arrayOf(Pair),
+  }).isRequired,
+};
+
+const DebugResponse = ({ dataDict }) => (
+  <Accordion>
+    <Card>
+      <Card.Header>
+        <Accordion.Toggle as={Button} variant="link" eventKey="0">
+          See full JSON response
+        </Accordion.Toggle>
+      </Card.Header>
+      <Accordion.Collapse eventKey="0" animation="false">
+        <Card.Body>
+          <pre>
+            {JSON.stringify(dataDict, null, 2)}
+          </pre>
+        </Card.Body>
+      </Accordion.Collapse>
+    </Card>
+  </Accordion>
+);
+DebugResponse.propTypes = PairsPropTypes;
+
+
 
 const Pairs = ({ dataDict }) => {
   const pairs = dataDict.pairs.map(
@@ -120,11 +124,6 @@ const Pairs = ({ dataDict }) => {
     </div>
   );
 };
-Pairs.propTypes = {
-  dataDict: PropTypes.shape({
-    address: PropTypes.string,
-    pairs: PropTypes.string,
-  }).isRequired,
-};
+Pairs.propTypes = PairsPropTypes;
 
 export default Pairs;
