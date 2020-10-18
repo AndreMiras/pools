@@ -17,7 +17,7 @@ const AddressForm = ({ onAddress, loading }) => {
       <div className="input-group">
         <input type="text" className="form-control bg-light border-0 small" placeholder="Ethereum address" aria-label="Address" aria-describedby="basic-addon2" onChange={(e) => { setAddress(e.target.value); }} />
         <div className="input-group-append">
-          <button className="btn btn-primary" type="submit" onClick={() => { onAddress(address); }}>
+          <button className="btn btn-primary" type="submit" onClick={onSubmit}>
             <FontAwesomeIcon className="fa-sm" icon={icon} pulse={loading} />
           </button>
         </div>
