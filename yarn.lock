@@ -1638,6 +1638,20 @@
   dependencies:
     "@babel/types" "^7.3.0"
 
+"@types/chart.js@*":
+  version "2.9.25"
+  resolved "https://registry.yarnpkg.com/@types/chart.js/-/chart.js-2.9.25.tgz#a22d18f6f7cb5b4499f39de600c4c520f635a58f"
+  integrity sha512-SPgPISpaGM42WL9Dezms4+8fInHxAXDzTs8DwPxhGuJT+jETXlVITTbe8bvK1n+sMmyyelR9B4w0lwMkA24oJg==
+  dependencies:
+    moment "^2.10.2"
+
+"@types/chartjs-plugin-colorschemes@^0.4.0":
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/@types/chartjs-plugin-colorschemes/-/chartjs-plugin-colorschemes-0.4.0.tgz#d044f1aeb5e0df54c6724f8b7c9ff1a0a95f7279"
+  integrity sha512-SFgG8pMUO0RV0SvJ9hQtAkFyjwVnFt0L9vtJwLQRtFtB7PkypUnh5SxGVF5yBKmXJduygy7eXbCVsFWi0PAYtQ==
+  dependencies:
+    "@types/chart.js" "*"
+
 "@types/classnames@^2.2.10":
   version "2.2.10"
   resolved "https://registry.yarnpkg.com/@types/classnames/-/classnames-2.2.10.tgz#cc658ca319b6355399efc1f5b9e818f1a24bf999"

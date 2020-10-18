@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import 'chartjs-plugin-colorschemes/src/plugins/plugin.colorschemes';
-import { SetOne9 } from 'chartjs-plugin-colorschemes/src/colorschemes/colorschemes.brewer';
+import 'chartjs-plugin-colorschemes/dist/chartjs-plugin-colorschemes.min';
 import { Accordion, Card, Button } from 'react-bootstrap';
 import { Doughnut } from 'react-chartjs-2';
 import Pairs from './Pairs';
@@ -32,7 +31,7 @@ const DoughnutChart = ({ dataDict }) => {
   const options = {
     plugins: {
       colorschemes: {
-        scheme: SetOne9,
+        scheme: 'brewer.SetOne9',
       },
     },
   };
