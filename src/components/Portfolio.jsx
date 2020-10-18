@@ -8,6 +8,7 @@ import Pairs from './Pairs';
 const PortfolioPropTypes = {
   dataDict: PropTypes.shape({
     address: PropTypes.string.isRequired,
+    balance_usd: PropTypes.number.isRequired,
     pairs: Pairs.isRequired,
   }).isRequired,
 };
@@ -29,13 +30,7 @@ const DoughnutChart = ({ dataDict }) => {
   };
   return <Doughnut data={data} />;
 };
-DoughnutChart.propTypes = {
-  dataDict: PropTypes.shape({
-    balance_usd: PropTypes.number.isRequired,
-    address: PropTypes.string.isRequired,
-    pairs: Pairs.isRequired,
-  }).isRequired,
-};
+DoughnutChart.propTypes = PortfolioPropTypes;
 
 const DebugResponse = ({ dataDict }) => (
   <Accordion>
@@ -59,6 +54,10 @@ DebugResponse.propTypes = PortfolioPropTypes;
 
 const Portfolio = ({ dataDict }) => (
   <div>
+    <h3>
+      Liquidity provider balance: $
+      { dataDict.balance_usd.toFixed(2) }
+    </h3>
     <DoughnutChart dataDict={dataDict} />
     <Pairs address={dataDict.address} pairs={dataDict.pairs} />
     <DebugResponse dataDict={dataDict} />
