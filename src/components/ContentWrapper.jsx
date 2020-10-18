@@ -1,5 +1,4 @@
 import React from 'react';
-import 'startbootstrap-sb-admin-2/css/sb-admin-2.min.css';
 import Content from './Content';
 
 const ContentWrapper = () => (

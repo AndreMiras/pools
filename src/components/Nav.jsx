@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { NavDropdown } from 'react-bootstrap';
-import 'startbootstrap-sb-admin-2/css/sb-admin-2.min.css';
 
 const AddressForm = ({ onAddress, loading }) => {
   const [address, setAddress] = useState();

@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import 'startbootstrap-sb-admin-2/css/sb-admin-2.min.css';
 import { Table } from 'react-bootstrap';
 import Pair from './Pair';
 

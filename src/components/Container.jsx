@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Container as ReactContainer, Button } from 'react-bootstrap';
 
-import 'startbootstrap-sb-admin-2/css/sb-admin-2.min.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { getPortfolioUrl } from '../utils/api';
 import Portfolio from './Portfolio';

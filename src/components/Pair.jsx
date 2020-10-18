@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import 'startbootstrap-sb-admin-2/css/sb-admin-2.min.css';
 
 const EtherscanTokenLink = ({ text, tokenAddress, ownerAddress }) => {
   const holderSuffix = ownerAddress ? `?a=${ownerAddress}` : '';

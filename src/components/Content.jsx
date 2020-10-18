@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import 'startbootstrap-sb-admin-2/css/sb-admin-2.min.css';
 import Container from './Container';
 import ErrorDialog from './ErrorDialog';
 import Nav from './Nav';
