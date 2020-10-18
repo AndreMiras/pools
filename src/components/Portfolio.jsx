@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import 'chartjs-plugin-colorschemes/src/plugins/plugin.colorschemes';
+import { SetOne9 } from 'chartjs-plugin-colorschemes/src/colorschemes/colorschemes.brewer';
 import 'startbootstrap-sb-admin-2/css/sb-admin-2.min.css';
 import { Accordion, Card, Button } from 'react-bootstrap';
 import { Doughnut } from 'react-chartjs-2';
@@ -28,7 +30,14 @@ const DoughnutChart = ({ dataDict }) => {
       data: datasetsData,
     }],
   };
-  return <Doughnut data={data} />;
+  const options = {
+    plugins: {
+      colorschemes: {
+        scheme: SetOne9,
+      },
+    },
+  };
+  return <Doughnut data={data} options={options} />;
 };
 DoughnutChart.propTypes = PortfolioPropTypes;
 
