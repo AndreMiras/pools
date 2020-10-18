@@ -1,10 +1,12 @@
 import React from 'react';
-import { Button, Modal } from 'react-bootstrap';
+import {
+  Button, Modal, Tab, Tabs,
+} from 'react-bootstrap';
 import PropTypes from 'prop-types';
-import TokenPropTypes from './TokenPropTypes';
+import { PairDictPropTypes, TokenPropTypes, TransactionPropTypes } from './CommonPropTypes';
 
 const Dialog = ({
-  title, body, show, onHide,
+  title, children, show, onHide,
 }) => (
   // note animation is disabled to workaround an upstream issue:
   // https://github.com/react-bootstrap/react-bootstrap/issues/5075
@@ -13,7 +15,7 @@ const Dialog = ({
       <Modal.Title>{title}</Modal.Title>
     </Modal.Header>
     <Modal.Body>
-      {body}
+      {children}
     </Modal.Body>
     <Modal.Footer>
       <Button variant="secondary" onClick={onHide}>
@@ -24,41 +26,80 @@ const Dialog = ({
 );
 Dialog.propTypes = {
   title: PropTypes.string.isRequired,
-  body: PropTypes.element.isRequired,
+  children: PropTypes.element.isRequired,
   show: PropTypes.bool.isRequired,
   onHide: PropTypes.func.isRequired,
 };
 
-const TransactionPropTypes = PropTypes.shape({
-  amount0: PropTypes.string.isRequired,
-  amount1: PropTypes.string.isRequired,
-  amountUSD: PropTypes.string.isRequired,
-  liquidity: PropTypes.string.isRequired,
-  sender: PropTypes.string.isRequired,
-  to: PropTypes.string.isRequired,
-  type: PropTypes.string.isRequired,
-});
+const OverviewTokenDetail = ({ token }) => (
+  <>
+    {token.symbol}
+    <ul>
+      <li>
+        Balance:
+        {token.balance}
+      </li>
+      <li>
+        Price:
+        {token.price}
+      </li>
+      <li>
+        Total USD: $
+        {token.balance_usd}
+      </li>
+    </ul>
+  </>
+);
+OverviewTokenDetail.propTypes = TokenPropTypes;
+
+const OverviewTab = ({ pairDict }) => (
+  <>
+    {pairDict.tokens.map((token) => <OverviewTokenDetail token={token} />)}
+  </>
+);
+OverviewTab.propTypes = PropTypes.shape(PairDictPropTypes).isRequired;
+
+const TransactionsTab = ({ transactions }) => (
+  <pre>
+    {JSON.stringify(transactions, null, 2)}
+  </pre>
+);
+TransactionsTab.propTypes = TransactionPropTypes;
+
+const DebugTab = ({ pairDict }) => (
+  <pre>
+    {JSON.stringify(pairDict, null, 2)}
+  </pre>
+);
+DebugTab.propTypes = PropTypes.shape(PairDictPropTypes).isRequired;
+
+const PairDetailsTabs = ({ pairDict }) => (
+  // note transition is disabled to workaround an upstream issue:
+  // https://github.com/react-bootstrap/react-bootstrap/issues/5075
+  <Tabs defaultActiveKey="overview" transition={false}>
+    <Tab eventKey="overview" title="Overview">
+      <OverviewTab pairDict={pairDict} />
+    </Tab>
+    <Tab eventKey="transactions" title="Transactions">
+      <TransactionsTab transactions={pairDict.transactions} />
+    </Tab>
+    <Tab eventKey="debug" title="Debug">
+      <DebugTab pairDict={pairDict} />
+    </Tab>
+  </Tabs>
+);
+PairDetailsTabs.propTypes = PropTypes.shape(PairDictPropTypes).isRequired;
 
 const PairDetails = ({ pairDict, show, onHide }) => {
   const title = `${pairDict.pair_symbol} pair details`;
-  const body = (
-    <pre>
-      {JSON.stringify(pairDict.transactions, null, 2)}
-    </pre>
+  return (
+    <Dialog title={title} show={show} onHide={onHide}>
+      <PairDetailsTabs pairDict={pairDict} />
+    </Dialog>
   );
-
-  return <Dialog title={title} body={body} show={show} onHide={onHide} />;
 };
 PairDetails.propTypes = {
-  pairDict: PropTypes.shape({
-    contract_address: PropTypes.string.isRequired,
-    owner_balance: PropTypes.number.isRequired,
-    pair_symbol: PropTypes.string.isRequired,
-    share: PropTypes.number.isRequired,
-    balance_usd: PropTypes.number.isRequired,
-    tokens: PropTypes.arrayOf(TokenPropTypes).isRequired,
-    transactions: PropTypes.arrayOf(TransactionPropTypes).isRequired,
-  }).isRequired,
+  pairDict: PropTypes.shape(PairDictPropTypes).isRequired,
   show: PropTypes.bool.isRequired,
   onHide: PropTypes.func.isRequired,
 };

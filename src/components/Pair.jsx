@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Button } from 'react-bootstrap';
 import PropTypes from 'prop-types';
+import { PairDictPropTypes } from './CommonPropTypes';
 import PairDetails from './PairDetails';
-import TokenPropTypes from './TokenPropTypes';
 
 const EtherscanTokenLink = ({ text, tokenAddress, ownerAddress }) => {
   const holderSuffix = ownerAddress ? `?a=${ownerAddress}` : '';
@@ -74,14 +74,7 @@ const Pair = ({ address, pairDict }) => {
 };
 Pair.propTypes = {
   address: PropTypes.string.isRequired,
-  pairDict: PropTypes.shape({
-    contract_address: PropTypes.string.isRequired,
-    owner_balance: PropTypes.number.isRequired,
-    pair_symbol: PropTypes.string.isRequired,
-    share: PropTypes.number.isRequired,
-    balance_usd: PropTypes.number.isRequired,
-    tokens: PropTypes.arrayOf(TokenPropTypes).isRequired,
-  }).isRequired,
+  pairDict: PropTypes.shape(PairDictPropTypes).isRequired,
 };
 
 export default Pair;
