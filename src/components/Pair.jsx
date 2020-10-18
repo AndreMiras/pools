@@ -1,5 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Button } from 'react-bootstrap';
 import PropTypes from 'prop-types';
+import PairDetails from './PairDetails';
+import TokenPropTypes from './TokenPropTypes';
 
 const EtherscanTokenLink = ({ text, tokenAddress, ownerAddress }) => {
   const holderSuffix = ownerAddress ? `?a=${ownerAddress}` : '';
@@ -17,12 +20,15 @@ EtherscanTokenLink.defaultProps = {
   ownerAddress: null,
 };
 
-const TokenPropTypes = PropTypes.shape({
-  symbol: PropTypes.string.isRequired,
-  balance: PropTypes.number,
-});
+const PairDetailsLink = ({ onClick }) => (
+  <Button type="link" onClick={onClick}>Details</Button>
+);
+PairDetailsLink.propTypes = {
+  onClick: PropTypes.func.isRequired,
+};
 
 const Pair = ({ address, pairDict }) => {
+  const [showDetails, setShowDetails] = useState(false);
   const token0 = pairDict.tokens[0];
   const token1 = pairDict.tokens[1];
   const decimalPlace = 2;
@@ -58,6 +64,10 @@ const Pair = ({ address, pairDict }) => {
       <td>
         $
         { pairDict.balance_usd.toFixed(decimalPlace) }
+      </td>
+      <td>
+        <PairDetails pairDict={pairDict} show={showDetails} onHide={() => setShowDetails(false)} />
+        <PairDetailsLink onClick={() => setShowDetails(true)} />
       </td>
     </tr>
   );

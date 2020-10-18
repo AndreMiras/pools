@@ -16,6 +16,7 @@ const Pairs = ({ address, pairs }) => {
           <th>Share</th>
           <th>Tokens balance</th>
           <th>Balance USD</th>
+          <th>Details</th>
         </tr>
       </thead>
       <tbody>
