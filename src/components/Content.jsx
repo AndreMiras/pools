@@ -11,6 +11,8 @@ const Content = () => {
   const [loading, setLoading] = useState(false);
 
   const onAddress = (address) => {
+    setDataDict(null);
+    setErrorDetail(null);
     const onOk = (data) => {
       setLoading(false);
       setDataDict(data);
@@ -24,7 +26,12 @@ const Content = () => {
     fetchPortfolio(address, onOk, onNotOk);
   };
   const container = dataDict ? <Container dataDict={dataDict} /> : null;
-  const errorDialog = errorDetail ? <ErrorDialog detail={errorDetail.detail} /> : null;
+  const errorDialog = errorDetail ? (
+    <ErrorDialog
+      detail={errorDetail.detail}
+      onClose={() => setErrorDetail(null)}
+    />
+  ) : null;
 
   return (
     <div id="content">
