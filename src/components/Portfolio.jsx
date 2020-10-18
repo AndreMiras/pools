@@ -33,7 +33,7 @@ DebugResponse.propTypes = PortfolioPropTypes;
 
 const Portfolio = ({ dataDict }) => (
   <div>
-    <Pairs pairs={dataDict.pairs} />
+    <Pairs address={dataDict.address} pairs={dataDict.pairs} />
     <DebugResponse dataDict={dataDict} />
   </div>
 );

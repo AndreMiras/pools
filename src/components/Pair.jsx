@@ -2,15 +2,20 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import 'startbootstrap-sb-admin-2/css/sb-admin-2.min.css';
 
-const EtherscanTokenLink = ({ address, text }) => {
-  const url = `https://etherscan.io/token/${address}`;
+const EtherscanTokenLink = ({ text, tokenAddress, ownerAddress }) => {
+  const holderSuffix = ownerAddress ? `?a=${ownerAddress}` : '';
+  const url = `https://etherscan.io/token/${tokenAddress}${holderSuffix}`;
   return (
     <a href={url}>{ text }</a>
   );
 };
 EtherscanTokenLink.propTypes = {
-  address: PropTypes.string.isRequired,
   text: PropTypes.string.isRequired,
+  tokenAddress: PropTypes.string.isRequired,
+  ownerAddress: PropTypes.string,
+};
+EtherscanTokenLink.defaultProps = {
+  ownerAddress: null,
 };
 
 const TokenPropTypes = PropTypes.shape({
@@ -18,17 +23,21 @@ const TokenPropTypes = PropTypes.shape({
   balance: PropTypes.number,
 });
 
-const Pair = ({ pairDict }) => {
+const Pair = ({ address, pairDict }) => {
   const token0 = pairDict.tokens[0];
   const token1 = pairDict.tokens[1];
   const decimalPlace = 2;
   return (
     <tr>
       <td>
-        <EtherscanTokenLink address={pairDict.contract_address} text={pairDict.pair_symbol} />
+        <EtherscanTokenLink text={pairDict.pair_symbol} tokenAddress={pairDict.contract_address} />
       </td>
       <td>
-        { pairDict.owner_balance.toFixed(decimalPlace) }
+        <EtherscanTokenLink
+          text={pairDict.owner_balance.toFixed(decimalPlace)}
+          tokenAddress={pairDict.contract_address}
+          ownerAddress={address}
+        />
       </td>
       <td>
         { pairDict.share.toFixed(decimalPlace) }
@@ -55,6 +64,7 @@ const Pair = ({ pairDict }) => {
   );
 };
 Pair.propTypes = {
+  address: PropTypes.string.isRequired,
   pairDict: PropTypes.shape({
     contract_address: PropTypes.string.isRequired,
     owner_balance: PropTypes.number.isRequired,

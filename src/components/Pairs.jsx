@@ -4,9 +4,9 @@ import 'startbootstrap-sb-admin-2/css/sb-admin-2.min.css';
 import { Table } from 'react-bootstrap';
 import Pair from './Pair';
 
-const Pairs = ({ pairs }) => {
+const Pairs = ({ address, pairs }) => {
   const pairsComponents = pairs.map(
-    (pairDict) => <Pair pairDict={pairDict} key={pairDict.contract_address} />,
+    (pairDict) => <Pair address={address} pairDict={pairDict} key={pairDict.contract_address} />,
   );
   return (
     <Table>
@@ -26,6 +26,7 @@ const Pairs = ({ pairs }) => {
   );
 };
 Pairs.propTypes = {
+  address: PropTypes.string.isRequired,
   pairs: PropTypes.arrayOf(Pair.propTypes.pairDict).isRequired,
 };
 
