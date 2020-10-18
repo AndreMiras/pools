@@ -18,21 +18,17 @@ Download.propTypes = {
   address: PropTypes.string.isRequired,
 };
 
-const Container = ({ dataDict }) => {
-  const portfolio = dataDict ? <Portfolio dataDict={dataDict} /> : null;
-  const download = dataDict ? <Download address={dataDict.address} /> : null;
-  return (
-    <ReactContainer fluid>
-      <div className="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 className="h3 mb-0 text-gray-800">Dashboard</h1>
-        { download }
-      </div>
-      <div className="row">
-        { portfolio }
-      </div>
-    </ReactContainer>
-  );
-};
+const Container = ({ dataDict }) => (
+  <ReactContainer fluid>
+    <div className="d-sm-flex align-items-center justify-content-between mb-4">
+      <h1 className="h3 mb-0 text-gray-800">Dashboard</h1>
+      <Download address={dataDict.address} />
+    </div>
+    <div className="row">
+      <Portfolio dataDict={dataDict} />
+    </div>
+  </ReactContainer>
+);
 Container.propTypes = Portfolio.propTypes;
 
 export default Container;
