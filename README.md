@@ -1,4 +1,7 @@
 # Pools, the liquidity provider dashboard
+
+[![Tests](https://github.com/AndreMiras/pools/workflows/Tests/badge.svg?branch=develop)](https://github.com/AndreMiras/pools/actions?query=workflow%3ATests)
+
 <https://andremiras.github.io/pools/>
 
 
