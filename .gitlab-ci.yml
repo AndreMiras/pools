@@ -1,0 +1,27 @@
+image: node:12-alpine
+
+cache:
+  paths:
+    - node_modules/
+
+before_script:
+  - yarn install
+
+test:
+  stage: test
+  script:
+    - CI=true yarn lint
+    - CI=true yarn test
+
+pages:
+  stage: deploy
+  script:
+    - CI=true yarn run build
+    - rm -rf public
+    - cp build/index.html build/404.html
+    - mv build public
+  artifacts:
+    paths:
+      - public # GitLab pages serve from a 'public' directory
+  only:
+    - develop
