@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/liquidity/static/css/main.e8718daf.chunk.css",
+    "main.js": "/liquidity/static/js/main.505d2604.chunk.js",
+    "main.js.map": "/liquidity/static/js/main.505d2604.chunk.js.map",
+    "runtime-main.js": "/liquidity/static/js/runtime-main.ae51594e.js",
+    "runtime-main.js.map": "/liquidity/static/js/runtime-main.ae51594e.js.map",
+    "static/css/2.419a1147.chunk.css": "/liquidity/static/css/2.419a1147.chunk.css",
+    "static/js/2.7eaf34fe.chunk.js": "/liquidity/static/js/2.7eaf34fe.chunk.js",
+    "static/js/2.7eaf34fe.chunk.js.map": "/liquidity/static/js/2.7eaf34fe.chunk.js.map",
+    "index.html": "/liquidity/index.html",
+    "precache-manifest.3a04eb68dbbb1f83be97c99fa2712d51.js": "/liquidity/precache-manifest.3a04eb68dbbb1f83be97c99fa2712d51.js",
+    "service-worker.js": "/liquidity/service-worker.js",
+    "static/css/2.419a1147.chunk.css.map": "/liquidity/static/css/2.419a1147.chunk.css.map",
+    "static/css/main.e8718daf.chunk.css.map": "/liquidity/static/css/main.e8718daf.chunk.css.map",
+    "static/js/2.7eaf34fe.chunk.js.LICENSE.txt": "/liquidity/static/js/2.7eaf34fe.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.ae51594e.js",
+    "static/css/2.419a1147.chunk.css",
+    "static/js/2.7eaf34fe.chunk.js",
+    "static/css/main.e8718daf.chunk.css",
+    "static/js/main.505d2604.chunk.js"
+  ]
+}
