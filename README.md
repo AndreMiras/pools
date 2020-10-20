@@ -1,5 +1,5 @@
-# Uniswap ROI
-<https://andre.miras.gitlab.io/uniswap-roi/>
+# Pools, the liquidity provider dashboard
+<https://andremiras.github.io/pools/>
 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
