@@ -4,6 +4,6 @@ import App from './App';
 
 test('renders title', () => {
   const { getByText } = render(<App />);
-  const linkElement = getByText(/Uniswap/i);
+  const linkElement = getByText(/Pools/);
   expect(linkElement).toBeInTheDocument();
 });

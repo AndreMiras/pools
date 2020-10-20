@@ -10,8 +10,7 @@ const Navbar = () => (
         <i className="fas fa-laugh-wink" />
       </div>
       <div className="sidebar-brand-text mx-3">
-        Uniswap
-        <sup>ROI</sup>
+        Pools
       </div>
     </a>
 
