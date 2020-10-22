@@ -13,6 +13,7 @@ const Pairs = ({ address, pairs }) => {
         <tr>
           <th>Symbol</th>
           <th>Pool token balance</th>
+          <th>Price</th>
           <th>Share</th>
           <th>Tokens balance</th>
           <th>Balance USD</th>
