@@ -2,9 +2,9 @@
 
 [![Tests](https://github.com/AndreMiras/pools/workflows/Tests/badge.svg?branch=develop)](https://github.com/AndreMiras/pools/actions?query=workflow%3ATests)
 
-The Uniswap liquidity provider dashboard.
+The Uniswap liquidity provider dashboard: <https://andremiras.github.io/pools/>
 
-<https://andremiras.github.io/pools/>
+Built on top of the Pools API: <https://github.com/AndreMiras/pools-api>
 
 <img src="https://i.imgur.com/lka0oGg.png" alt="Screenshot">
 

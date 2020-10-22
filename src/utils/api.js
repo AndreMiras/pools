@@ -1,4 +1,4 @@
-const apiURL = 'https://uniswaproi.herokuapp.com/portfolio/';
+const apiURL = 'https://pools-api.herokuapp.com/portfolio/';
 
 const getPortfolioUrl = (address) => (
   apiURL + address
