@@ -22,7 +22,10 @@ const ErrorDialog = ({ detail, onClose }) => {
 };
 ErrorDialog.propTypes = {
   detail: PropTypes.string.isRequired,
-  onClose: PropTypes.func.isRequired,
+  onClose: PropTypes.func,
+};
+ErrorDialog.defaultProps = {
+  onClose: () => null,
 };
 
 export default ErrorDialog;

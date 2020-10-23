@@ -1,33 +1,20 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { Container as ReactContainer, Button } from 'react-bootstrap';
+import { Container as ReactContainer } from 'react-bootstrap';
+import { Switch, Route } from 'react-router-dom';
+import PortfolioController from './PortfolioController';
+import Home from './Home';
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { getPortfolioUrl } from '../utils/api';
-import Portfolio from './Portfolio';
-
-const Download = ({ address }) => (
-  <Button variant="primary" size="sm" href={getPortfolioUrl(address)}>
-    <FontAwesomeIcon icon="download" />
-    {' '}
-    Download
-  </Button>
-);
-Download.propTypes = {
-  address: PropTypes.string.isRequired,
-};
-
-const Container = ({ dataDict }) => (
+const Container = () => (
   <ReactContainer fluid>
-    <div className="d-sm-flex align-items-center justify-content-between mb-4">
-      <h1 className="h3 mb-0 text-gray-800">Dashboard</h1>
-      <Download address={dataDict.address} />
-    </div>
-    <div className="row">
-      <Portfolio dataDict={dataDict} />
-    </div>
+    <Switch>
+      <Route exact path="/">
+        <Home />
+      </Route>
+      <Route path="/portfolio/:address" key={Math.random()}>
+        <PortfolioController timestamp={new Date().toString()} />
+      </Route>
+    </Switch>
   </ReactContainer>
 );
-Container.propTypes = Portfolio.propTypes;
 
 export default Container;

@@ -1,42 +1,30 @@
 import React, { useState } from 'react';
+import { useHistory, Redirect } from 'react-router-dom';
+
 import Container from './Container';
-import ErrorDialog from './ErrorDialog';
 import Nav from './Nav';
-import { fetchPortfolio } from '../utils/api';
 
 const Content = () => {
-  const [dataDict, setDataDict] = useState(null);
-  const [errorDetail, setErrorDetail] = useState(null);
-  const [loading, setLoading] = useState(false);
-
-  const onAddress = (address) => {
-    setDataDict(null);
-    setErrorDetail(null);
-    const onOk = (data) => {
-      setLoading(false);
-      setDataDict(data);
-    };
-    const onNotOk = (data) => {
-      setLoading(false);
-      setErrorDetail(data);
-    };
-
-    setLoading(true);
-    fetchPortfolio(address, onOk, onNotOk);
+  const [address, setAddress] = useState(null);
+  const history = useHistory();
+  /*
+   * Forces the components to be re-rendered even though the route didn't change.
+   * https://stackoverflow.com/q/47602091/185510
+   */
+  const forceReload = () => {
+    history.push('/temp');
+    history.goBack();
   };
-  const container = dataDict ? <Container dataDict={dataDict} /> : null;
-  const errorDialog = errorDetail ? (
-    <ErrorDialog
-      detail={errorDetail.detail}
-      onClose={() => setErrorDetail(null)}
-    />
-  ) : null;
-
+  const onAddress = (newAddress) => {
+    (address === newAddress) && forceReload();
+    setAddress(newAddress);
+  };
+  const redirect = address ? <Redirect to={`/portfolio/${address}`} /> : null;
   return (
     <div id="content">
-      {errorDialog}
-      <Nav onAddress={onAddress} loading={loading} />
-      {container}
+      {redirect}
+      <Nav onAddress={onAddress} />
+      <Container />
     </div>
   );
 };
