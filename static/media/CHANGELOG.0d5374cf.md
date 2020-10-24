@@ -3,6 +3,7 @@
 
 ## [Unreleased]
 
+  - Autodeploy on merge, refs #1
   - Setup CI, refs #2
   - Introduce React Router, refs #4
   - Add website version to footer, refs #6
