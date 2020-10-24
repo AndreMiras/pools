@@ -1,6 +1,7 @@
 # Pools
 
 [![Tests](https://github.com/AndreMiras/pools/workflows/Tests/badge.svg?branch=develop)](https://github.com/AndreMiras/pools/actions?query=workflow%3ATests)
+[![Deploy](https://github.com/AndreMiras/pools/workflows/Deploy/badge.svg?branch=develop)](https://github.com/AndreMiras/pools/actions?query=workflow%3ADeploy)
 
 The Uniswap liquidity provider dashboard: <https://andremiras.github.io/pools/>
 
