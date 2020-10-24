@@ -8,7 +8,7 @@ import {
 import { Doughnut } from 'react-chartjs-2';
 import Pairs from './Pairs';
 import Title from './Title';
-import { getPortfolioUrl } from '../utils/api';
+import { portfolioUrl } from '../utils/api';
 
 const PortfolioPropTypes = {
   dataDict: PropTypes.shape({
@@ -19,7 +19,7 @@ const PortfolioPropTypes = {
 };
 
 const Download = ({ address }) => (
-  <Button variant="primary" size="sm" href={getPortfolioUrl(address)}>
+  <Button variant="primary" size="sm" href={portfolioUrl(address)}>
     <FontAwesomeIcon icon="download" />
     {' '}
     Download

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import { PairDictPropTypes } from './CommonPropTypes';
@@ -21,7 +22,7 @@ EtherscanTokenLink.defaultProps = {
 };
 
 const PairDetailsLink = ({ onClick }) => (
-  <Button type="link" onClick={onClick}>Details</Button>
+  <Button type="link" onClick={onClick}>Details 1</Button>
 );
 PairDetailsLink.propTypes = {
   onClick: PropTypes.func.isRequired,
@@ -72,6 +73,10 @@ const Pair = ({ address, pairDict }) => {
       <td>
         <PairDetails pairDict={pairDict} show={showDetails} onHide={() => setShowDetails(false)} />
         <PairDetailsLink onClick={() => setShowDetails(true)} />
+        {' '}
+        <Link to={`/pairs/${pairDict.contract_address}`}>
+          <Button type="link">Details 2</Button>
+        </Link>
       </td>
     </tr>
   );

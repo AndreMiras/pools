@@ -1,11 +1,9 @@
-const apiURL = 'https://pools-api.herokuapp.com/portfolio/';
+const apiRootURL = 'https://pools-api.herokuapp.com';
+const portfolioUrl = (address) => (`${apiRootURL}/portfolio/${address}`);
+const tokensDailyUrl = (address) => (`${apiRootURL}/tokens/${address}/daily`);
+const pairsDailyUrl = (address) => (`${apiRootURL}/pairs/${address}/daily`);
 
-const getPortfolioUrl = (address) => (
-  apiURL + address
-);
-
-const fetchPortfolio = (address, onOk, onNotOk) => {
-  const url = getPortfolioUrl(address);
+const fetchFromAPI = (url, onOk, onNotOk) => {
   fetch(url)
     .then((response) => {
       const callback = response.ok ? onOk : onNotOk;
@@ -18,4 +16,18 @@ const fetchPortfolio = (address, onOk, onNotOk) => {
     (error) => onNotOk({ detail: error.toString() }));
 };
 
-export { getPortfolioUrl, fetchPortfolio };
+const fetchPortfolio = (address, onOk, onNotOk) => (
+  fetchFromAPI(portfolioUrl(address), onOk, onNotOk)
+);
+
+const fetchTokensDaily = (address, onOk, onNotOk) => (
+  fetchFromAPI(tokensDailyUrl(address), onOk, onNotOk)
+);
+
+const fetchPairsDaily = (address, onOk, onNotOk) => (
+  fetchFromAPI(pairsDailyUrl(address), onOk, onNotOk)
+);
+
+export {
+  portfolioUrl, tokensDailyUrl, pairsDailyUrl, fetchPortfolio, fetchTokensDaily, fetchPairsDaily,
+};
