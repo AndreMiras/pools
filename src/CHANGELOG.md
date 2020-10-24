@@ -1,7 +1,7 @@
 # Change Log
 
 
-## [Unreleased]
+## [2020.10.24]
 
   - Autodeploy on merge, refs #1
   - Setup CI, refs #2
