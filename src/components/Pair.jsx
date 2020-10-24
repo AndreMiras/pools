@@ -45,6 +45,10 @@ const Pair = ({ address, pairDict }) => {
         />
       </td>
       <td>
+        $
+        { pairDict.token_price.toFixed(decimalPlace) }
+      </td>
+      <td>
         { pairDict.share.toFixed(decimalPlace) }
         %
       </td>

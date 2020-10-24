@@ -1,9 +1,14 @@
 import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import PropTypes from 'prop-types';
 import 'chartjs-plugin-colorschemes/dist/chartjs-plugin-colorschemes.min';
-import { Accordion, Card, Button } from 'react-bootstrap';
+import {
+  Accordion, Button, Card, Col, Row,
+} from 'react-bootstrap';
 import { Doughnut } from 'react-chartjs-2';
 import Pairs from './Pairs';
+import Title from './Title';
+import { getPortfolioUrl } from '../utils/api';
 
 const PortfolioPropTypes = {
   dataDict: PropTypes.shape({
@@ -11,6 +16,17 @@ const PortfolioPropTypes = {
     balance_usd: PropTypes.number.isRequired,
     pairs: Pairs.isRequired,
   }).isRequired,
+};
+
+const Download = ({ address }) => (
+  <Button variant="primary" size="sm" href={getPortfolioUrl(address)}>
+    <FontAwesomeIcon icon="download" />
+    {' '}
+    Download
+  </Button>
+);
+Download.propTypes = {
+  address: PropTypes.string.isRequired,
 };
 
 const DoughnutChart = ({ dataDict }) => {
@@ -60,15 +76,26 @@ const DebugResponse = ({ dataDict }) => (
 DebugResponse.propTypes = PortfolioPropTypes;
 
 const Portfolio = ({ dataDict }) => (
-  <div>
-    <h3>
-      Liquidity provider balance: $
-      { dataDict.balance_usd.toFixed(2) }
-    </h3>
-    <DoughnutChart dataDict={dataDict} />
-    <Pairs address={dataDict.address} pairs={dataDict.pairs} />
-    <DebugResponse dataDict={dataDict} />
-  </div>
+  <>
+    <Title title="Portfolio" extraComponent={<Download address={dataDict.address} />} />
+    <Row>
+      <h3>
+        Liquidity provider balance: $
+        { dataDict.balance_usd.toFixed(2) }
+      </h3>
+    </Row>
+    <Row>
+      <Col xs={7}>
+        <DoughnutChart dataDict={dataDict} />
+      </Col>
+    </Row>
+    <Row>
+      <Pairs address={dataDict.address} pairs={dataDict.pairs} />
+    </Row>
+    <Row>
+      <DebugResponse dataDict={dataDict} />
+    </Row>
+  </>
 );
 Portfolio.propTypes = PortfolioPropTypes;
 

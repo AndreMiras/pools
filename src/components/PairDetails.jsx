@@ -50,11 +50,11 @@ const OverviewTokenDetail = ({ token }) => (
     </ul>
   </>
 );
-OverviewTokenDetail.propTypes = TokenPropTypes;
+OverviewTokenDetail.propTypes = PropTypes.shape(TokenPropTypes).isRequired;
 
 const OverviewTab = ({ pairDict }) => (
   <>
-    {pairDict.tokens.map((token) => <OverviewTokenDetail token={token} />)}
+    {pairDict.tokens.map((token) => <OverviewTokenDetail token={token} key={token.symbol} />)}
   </>
 );
 OverviewTab.propTypes = PropTypes.shape(PairDictPropTypes).isRequired;
@@ -64,7 +64,7 @@ const TransactionsTab = ({ transactions }) => (
     {JSON.stringify(transactions, null, 2)}
   </pre>
 );
-TransactionsTab.propTypes = TransactionPropTypes;
+TransactionsTab.propTypes = PropTypes.shape(TransactionPropTypes).isRequired;
 
 const DebugTab = ({ pairDict }) => (
   <pre>

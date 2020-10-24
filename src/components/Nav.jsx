@@ -26,7 +26,10 @@ const AddressForm = ({ onAddress, loading }) => {
 };
 AddressForm.propTypes = {
   onAddress: PropTypes.func.isRequired,
-  loading: PropTypes.bool.isRequired,
+  loading: PropTypes.bool,
+};
+AddressForm.defaultProps = {
+  loading: false,
 };
 
 const Nav = ({ onAddress, loading }) => (
@@ -53,9 +56,6 @@ const Nav = ({ onAddress, loading }) => (
 
   </nav>
 );
-Nav.propTypes = {
-  onAddress: PropTypes.func.isRequired,
-  loading: PropTypes.bool.isRequired,
-};
+Nav.propTypes = AddressForm.propTypes;
 
 export default Nav;

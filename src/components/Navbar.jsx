@@ -1,24 +1,78 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import { Button } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
+const CollapsedNavItem = ({ innerButton, children }) => {
+  const [show, setShow] = useState(false);
+  const toggleShow = () => setShow(!show);
+  const divClass = show ? 'show' : '';
+  const buttonClass = show ? '' : 'collapsed';
+
+  return (
+    <>
+      <Button
+        variant="link"
+        className={`nav-link ${buttonClass}`}
+        data-toggle="collapse"
+        aria-expanded={show}
+        onClick={() => toggleShow()}
+      >
+        {innerButton}
+      </Button>
+      <div className={`collapse ${divClass}`}>
+        {children}
+      </div>
+    </>
+  );
+};
+CollapsedNavItem.propTypes = {
+  innerButton: PropTypes.element.isRequired,
+  children: PropTypes.element.isRequired,
+};
+
+const SourceCodeNavItem = () => {
+  const innerButton = (
+    <>
+      <FontAwesomeIcon className="fa-fw mr-1" icon="code" />
+      {' '}
+      <span>Source code</span>
+    </>
+  );
+  const children = (
+    <div className="bg-white py-2 collapse-inner rounded">
+      <h6 className="collapse-header">Frontend:</h6>
+      <a className="collapse-item" href="https://github.com/AndreMiras/pools">AndreMiras/pools</a>
+      <div className="collapse-divider" />
+      <h6 className="collapse-header">Backend:</h6>
+      <a className="collapse-item" href="https://github.com/AndreMiras/pools-api">AndreMiras/pools-api</a>
+      <a className="collapse-item" href="https://github.com/AndreMiras/libpools">AndreMiras/libpools</a>
+    </div>
+  );
+  return (
+    <CollapsedNavItem innerButton={innerButton}>
+      {children}
+    </CollapsedNavItem>
+  );
+};
 
 const Navbar = () => (
   <ul className="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
-    <a className="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+    <a className="sidebar-brand d-flex align-items-center justify-content-center" href={process.env.PUBLIC_URL}>
       <div className="sidebar-brand-icon rotate-n-15">
         <i className="fas fa-laugh-wink" />
       </div>
       <div className="sidebar-brand-text mx-3">
-        Uniswap
-        <sup>ROI</sup>
+        Pools
       </div>
     </a>
 
     <hr className="sidebar-divider my-0" />
 
     <li className="nav-item active">
-      <a className="nav-link" href="index.html">
+      <a className="nav-link" href={process.env.PUBLIC_URL}>
         <FontAwesomeIcon className="fa-fw mr-1" icon="tachometer-alt" />
         <span>Dashboard</span>
       </a>
@@ -63,33 +117,19 @@ const Navbar = () => (
     <hr className="sidebar-divider" />
 
     <div className="sidebar-heading">
-      Addons
+      Links
     </div>
 
     <li className="nav-item">
-      <Button variant="link" className="nav-link collapsed" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
-        <FontAwesomeIcon className="fa-fw mr-1" icon="folder" />
-        <span>Pages</span>
-      </Button>
-      <div id="collapsePages" className="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-        <div className="bg-white py-2 collapse-inner rounded">
-          <h6 className="collapse-header">Login Screens:</h6>
-          <a className="collapse-item" href="login.html">Login</a>
-          <a className="collapse-item" href="register.html">Register</a>
-          <a className="collapse-item" href="forgot-password.html">Forgot Password</a>
-          <div className="collapse-divider" />
-          <h6 className="collapse-header">Other Pages:</h6>
-          <a className="collapse-item" href="404.html">404 Page</a>
-          <a className="collapse-item" href="blank.html">Blank Page</a>
-        </div>
-      </div>
+      <SourceCodeNavItem />
     </li>
 
     <li className="nav-item">
-      <a className="nav-link" href="charts.html">
-        <i className="fas fa-fw fa-chart-area" />
-        <span>Charts</span>
-      </a>
+
+      <Link className="nav-link" to="/changelog">
+        <FontAwesomeIcon className="fa-fw mr-1" icon="list" />
+        <span>Changelog</span>
+      </Link>
     </li>
 
     <li className="nav-item">

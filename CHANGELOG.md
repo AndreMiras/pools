@@ -1,5 +1,3 @@
 # Change Log
 
-## [2020.10.19]
-
-  - Initial UI release
+Moved to [src/CHANGELOG.md](https://github.com/AndreMiras/pools/blob/develop/src/CHANGELOG.md).
