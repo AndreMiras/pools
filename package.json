@@ -1,7 +1,7 @@
 {
   "name": "uniswap-roi",
   "homepage": "https://andremiras.github.io/pools/",
-  "version": "2020.10.19.dev0",
+  "version": "2020.10.24",
   "private": true,
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.15.1",
