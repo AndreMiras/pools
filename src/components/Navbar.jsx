@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { Button } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -59,7 +60,7 @@ const SourceCodeNavItem = () => {
 const Navbar = () => (
   <ul className="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
-    <a className="sidebar-brand d-flex align-items-center justify-content-center" href={`${process.env.PUBLIC_URL}/`}>
+    <a className="sidebar-brand d-flex align-items-center justify-content-center" href={process.env.PUBLIC_URL}>
       <div className="sidebar-brand-icon rotate-n-15">
         <i className="fas fa-laugh-wink" />
       </div>
@@ -71,7 +72,7 @@ const Navbar = () => (
     <hr className="sidebar-divider my-0" />
 
     <li className="nav-item active">
-      <a className="nav-link" href="index.html">
+      <a className="nav-link" href={process.env.PUBLIC_URL}>
         <FontAwesomeIcon className="fa-fw mr-1" icon="tachometer-alt" />
         <span>Dashboard</span>
       </a>
@@ -124,10 +125,11 @@ const Navbar = () => (
     </li>
 
     <li className="nav-item">
-      <a className="nav-link" href="charts.html">
-        <i className="fas fa-fw fa-chart-area" />
-        <span>Charts</span>
-      </a>
+
+      <Link className="nav-link" to="/changelog">
+        <FontAwesomeIcon className="fa-fw mr-1" icon="list" />
+        <span>Changelog</span>
+      </Link>
     </li>
 
     <li className="nav-item">
