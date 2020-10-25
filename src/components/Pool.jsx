@@ -25,7 +25,17 @@ const LineChart = ({ pairDailyList }) => {
       data: datasetsData,
     }],
   };
-  return <Line data={data} />;
+  const options = {
+    scales: {
+      xAxes: [{
+        type: 'time',
+        time: {
+          unit: 'day',
+        },
+      }],
+    },
+  };
+  return <Line data={data} options={options} />;
 };
 LineChart.propTypes = PoolPropTypes;
 
