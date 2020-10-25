@@ -2,7 +2,7 @@
 
 
 ## [Unreleased]
-  - Fetch raw price feed of a pair, refs #9
+  - Pair price chart page, refs #9
 
 ## [2020.10.24]
   - Autodeploy on merge, refs #1
