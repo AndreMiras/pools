@@ -22,7 +22,7 @@ EtherscanTokenLink.defaultProps = {
 };
 
 const PairDetailsLink = ({ onClick }) => (
-  <Button type="link" onClick={onClick}>Details 1</Button>
+  <Button type="link" onClick={onClick}>Details</Button>
 );
 PairDetailsLink.propTypes = {
   onClick: PropTypes.func.isRequired,
@@ -46,8 +46,10 @@ const Pair = ({ address, pairDict }) => {
         />
       </td>
       <td>
-        $
-        { pairDict.token_price.toFixed(decimalPlace) }
+        <Link to={`/pairs/${pairDict.contract_address}`}>
+          $
+          { pairDict.token_price.toFixed(decimalPlace) }
+        </Link>
       </td>
       <td>
         { pairDict.share.toFixed(decimalPlace) }
@@ -73,10 +75,6 @@ const Pair = ({ address, pairDict }) => {
       <td>
         <PairDetails pairDict={pairDict} show={showDetails} onHide={() => setShowDetails(false)} />
         <PairDetailsLink onClick={() => setShowDetails(true)} />
-        {' '}
-        <Link to={`/pairs/${pairDict.contract_address}`}>
-          <Button type="link">Details 2</Button>
-        </Link>
       </td>
     </tr>
   );
