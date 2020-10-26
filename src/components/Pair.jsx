@@ -1,24 +1,10 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import { PairDictPropTypes } from './CommonPropTypes';
 import PairDetails from './PairDetails';
-
-const EtherscanTokenLink = ({ text, tokenAddress, ownerAddress }) => {
-  const holderSuffix = ownerAddress ? `?a=${ownerAddress}` : '';
-  const url = `https://etherscan.io/token/${tokenAddress}${holderSuffix}`;
-  return (
-    <a href={url}>{ text }</a>
-  );
-};
-EtherscanTokenLink.propTypes = {
-  text: PropTypes.string.isRequired,
-  tokenAddress: PropTypes.string.isRequired,
-  ownerAddress: PropTypes.string,
-};
-EtherscanTokenLink.defaultProps = {
-  ownerAddress: null,
-};
+import EtherscanTokenLink from './common/EtherscanTokenLink';
 
 const PairDetailsLink = ({ onClick }) => (
   <Button type="link" onClick={onClick}>Details</Button>
@@ -35,7 +21,7 @@ const Pair = ({ address, pairDict }) => {
   return (
     <tr>
       <td>
-        <EtherscanTokenLink text={pairDict.pair_symbol} tokenAddress={pairDict.contract_address} />
+        <EtherscanTokenLink text={pairDict.symbol} tokenAddress={pairDict.contract_address} />
       </td>
       <td>
         <EtherscanTokenLink
@@ -45,8 +31,10 @@ const Pair = ({ address, pairDict }) => {
         />
       </td>
       <td>
-        $
-        { pairDict.token_price.toFixed(decimalPlace) }
+        <Link to={`/pairs/${pairDict.contract_address}`}>
+          $
+          { pairDict.price_usd.toFixed(decimalPlace) }
+        </Link>
       </td>
       <td>
         { pairDict.share.toFixed(decimalPlace) }

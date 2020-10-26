@@ -9,7 +9,7 @@ const Title = ({ title, extraComponent }) => (
 );
 Title.propTypes = {
   title: PropTypes.string.isRequired,
-  extraComponent: PropTypes.elementType,
+  extraComponent: PropTypes.element,
 };
 Title.defaultProps = {
   extraComponent: null,

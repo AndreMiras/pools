@@ -2,6 +2,8 @@ import React from 'react';
 import { Container as ReactContainer } from 'react-bootstrap';
 import { Switch, Route } from 'react-router-dom';
 import PortfolioController from './PortfolioController';
+import PoolController from './PoolController';
+import PairsController from './pairs/PairsController';
 import Changelog from './Changelog';
 import Home from './Home';
 
@@ -13,6 +15,12 @@ const Container = () => (
       </Route>
       <Route path="/portfolio/:address">
         <PortfolioController />
+      </Route>
+      <Route exact path="/pairs">
+        <PairsController />
+      </Route>
+      <Route path="/pairs/:address">
+        <PoolController />
       </Route>
       <Route path="/changelog">
         <Changelog />

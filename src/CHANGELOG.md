@@ -1,8 +1,11 @@
 # Change Log
 
 
-## [2020.10.24]
+## [2020.10.26]
+  - Pair price chart page, refs #9
+  - List top pools
 
+## [2020.10.24]
   - Autodeploy on merge, refs #1
   - Setup CI, refs #2
   - Introduce React Router, refs #4
@@ -12,5 +15,4 @@
 
 
 ## [2020.10.19]
-
   - Initial UI release
