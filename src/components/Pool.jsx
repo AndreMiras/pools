@@ -3,21 +3,35 @@ import PropTypes from 'prop-types';
 import { Line } from 'react-chartjs-2';
 import Title from './Title';
 
-const TokenDaily = {
-  date: PropTypes.instanceOf(Date).isRequired,
+const DatePrice = PropTypes.shape({
+  date: PropTypes.string.isRequired,
   price_usd: PropTypes.number.isRequired,
+}).isRequired;
+
+const PairsDailyPair = {
+  price_usd: PropTypes.number.isRequired,
+  reserve_usd: PropTypes.number.isRequired,
+  symbol: PropTypes.string.isRequired,
+  total_supply: PropTypes.number.isRequired,
+};
+
+const DatePriceList = PropTypes.arrayOf(DatePrice).isRequired;
+
+const PairsDaily = {
+  pair: PropTypes.shape(PairsDailyPair).isRequired,
+  date_price: DatePriceList,
 };
 
 const PoolPropTypes = {
-  pairDailyList: PropTypes.arrayOf(TokenDaily).isRequired,
+  pairsDaily: PropTypes.shape(PairsDaily).isRequired,
 };
 
-const LineChart = ({ pairDailyList }) => {
-  const sortedPairDailyList = pairDailyList.sort(
+const LineChart = ({ datePrice }) => {
+  const sortedPairDailyList = datePrice.sort(
     (a, b) => new Date(a.date) - new Date(b.date),
   );
   const labels = sortedPairDailyList.map((pairDaily) => pairDaily.date);
-  const datasetsData = sortedPairDailyList.map((pairDaily) => pairDaily.price_usd);
+  const datasetsData = sortedPairDailyList.map((pairDaily) => pairDaily.price_usd.toFixed(2));
   const data = {
     labels,
     datasets: [{
@@ -37,12 +51,12 @@ const LineChart = ({ pairDailyList }) => {
   };
   return <Line data={data} options={options} />;
 };
-LineChart.propTypes = PoolPropTypes;
+LineChart.propTypes = DatePriceList;
 
-const Pool = ({ pairDailyList }) => (
+const Pool = ({ pairsDaily }) => (
   <>
-    <Title title="Pair" />
-    <LineChart pairDailyList={pairDailyList} />
+    <Title title={`Pair ${pairsDaily.pair.symbol} $${pairsDaily.pair.price_usd.toFixed(2)}`} />
+    <LineChart datePrice={pairsDaily.date_price} />
   </>
 );
 Pool.propTypes = PoolPropTypes;

@@ -7,22 +7,22 @@ import Pool from './Pool';
 
 const PoolController = () => {
   const { address } = useParams();
-  const [pairDailyList, setTokenDailyList] = useState(null);
+  const [pairsDaily, setPairsDaily] = useState(null);
   const [errorDetail, setErrorDetail] = useState(null);
   const onOk = (data) => {
     setErrorDetail(null);
-    setTokenDailyList(data);
+    setPairsDaily(data);
   };
   const errorDialog = errorDetail ? (
     <ErrorDialog
       detail={errorDetail.detail}
     />
   ) : null;
-  const pool = pairDailyList ? <Pool pairDailyList={pairDailyList} /> : null;
-  const spinner = !(pairDailyList || errorDetail) ? <Spinner animation="border" /> : null;
+  const pool = pairsDaily ? <Pool pairsDaily={pairsDaily} /> : null;
+  const spinner = !(pairsDaily || errorDetail) ? <Spinner animation="border" /> : null;
   useEffect(() => {
     setErrorDetail(null);
-    setTokenDailyList(null);
+    setPairsDaily(null);
     fetchPairsDaily(address, onOk, setErrorDetail);
   }, [address]);
   return (
