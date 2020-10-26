@@ -1,4 +1,5 @@
-const apiRootURL = 'https://pools-api.herokuapp.com';
+// const apiRootURL = 'https://pools-api.herokuapp.com';
+const apiRootURL = 'http://localhost:8000';
 const portfolioUrl = (address) => (`${apiRootURL}/portfolio/${address}`);
 const tokensDailyUrl = (address) => (`${apiRootURL}/tokens/${address}/daily`);
 const pairsDailyUrl = (address) => (`${apiRootURL}/pairs/${address}/daily`);

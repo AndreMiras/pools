@@ -91,7 +91,7 @@ const PairDetailsTabs = ({ pairDict }) => (
 PairDetailsTabs.propTypes = PropTypes.shape(PairDictPropTypes).isRequired;
 
 const PairDetails = ({ pairDict, show, onHide }) => {
-  const title = `${pairDict.pair_symbol} pair details`;
+  const title = `${pairDict.symbol} pair details`;
   return (
     <Dialog title={title} show={show} onHide={onHide}>
       <PairDetailsTabs pairDict={pairDict} />
