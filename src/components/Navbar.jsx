@@ -57,67 +57,83 @@ const SourceCodeNavItem = () => {
   );
 };
 
-const Navbar = () => (
-  <ul className="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-
-    <a className="sidebar-brand d-flex align-items-center justify-content-center" href={process.env.PUBLIC_URL}>
-      <div className="sidebar-brand-icon rotate-n-15">
-        <i className="fas fa-laugh-wink" />
-      </div>
-      <div className="sidebar-brand-text mx-3">
-        Pools
-      </div>
-    </a>
-
-    <hr className="sidebar-divider my-0" />
-
-    <li className="nav-item active">
-      <a className="nav-link" href={process.env.PUBLIC_URL}>
-        <FontAwesomeIcon className="fa-fw mr-1" icon="tachometer-alt" />
-        <span>Dashboard</span>
-      </a>
-    </li>
-
-    <hr className="sidebar-divider" />
-
-    <div className="sidebar-heading">
-      Interface
+const PoolsHeader = () => (
+  <a className="sidebar-brand d-flex align-items-center justify-content-center" href={process.env.PUBLIC_URL}>
+    <div className="sidebar-brand-icon rotate-n-15">
+      <i className="fas fa-laugh-wink" />
     </div>
-
-    <li className="nav-item">
-      <Link to="/pairs">
-        <Button variant="link" className="nav-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-          <FontAwesomeIcon className="fa-cog mr-1" icon="chart-pie" />
-          <span>Pools</span>
-        </Button>
-      </Link>
-    </li>
-
-    <hr className="sidebar-divider" />
-
-    <div className="sidebar-heading">
-      Links
+    <div className="sidebar-brand-text mx-3">
+      Pools
     </div>
-
-    <li className="nav-item">
-      <SourceCodeNavItem />
-    </li>
-
-    <li className="nav-item">
-
-      <Link className="nav-link" to="/changelog">
-        <FontAwesomeIcon className="fa-fw mr-1" icon="list" />
-        <span>Changelog</span>
-      </Link>
-    </li>
-
-    <hr className="sidebar-divider d-none d-md-block" />
-
-    <div className="text-center d-none d-md-inline">
-      <button className="rounded-circle border-0" id="sidebarToggle" type="button" aria-label="Toggle sidebar" />
-    </div>
-
-  </ul>
+  </a>
 );
+
+const DashboardLi = () => (
+  <li className="nav-item active">
+    <a className="nav-link" href={process.env.PUBLIC_URL}>
+      <FontAwesomeIcon className="fa-fw mr-1" icon="tachometer-alt" />
+      <span>Dashboard</span>
+    </a>
+  </li>
+);
+
+const PairsLi = () => (
+  <li className="nav-item">
+    <Link to="/pairs">
+      <Button variant="link" className="nav-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+        <FontAwesomeIcon className="fa-cog mr-1" icon="chart-pie" />
+        <span>Pools</span>
+      </Button>
+    </Link>
+  </li>
+);
+
+const ChangelogLi = () => (
+  <li className="nav-item">
+    <Link className="nav-link" to="/changelog">
+      <FontAwesomeIcon className="fa-fw mr-1" icon="list" />
+      <span>Changelog</span>
+    </Link>
+  </li>
+);
+
+const Navbar = () => {
+  const [show, setShow] = useState(false);
+  const toggleShow = () => setShow(!show);
+  const divClass = show ? 'toggled' : '';
+
+  return (
+    <ul className={`navbar-nav bg-gradient-primary sidebar sidebar-dark accordion ${divClass}`} id="accordionSidebar">
+      <PoolsHeader />
+      <hr className="sidebar-divider my-0" />
+      <DashboardLi />
+      <hr className="sidebar-divider" />
+      <div className="sidebar-heading">
+        Interface
+      </div>
+      <PairsLi />
+      <hr className="sidebar-divider" />
+      <div className="sidebar-heading">
+        Links
+      </div>
+      <li className="nav-item">
+        <SourceCodeNavItem />
+      </li>
+      <ChangelogLi />
+      <hr className="sidebar-divider d-none d-md-block" />
+
+      <div className="text-center d-none d-md-inline">
+        <button
+          className="rounded-circle border-0"
+          id="sidebarToggle"
+          type="button"
+          aria-label="Toggle sidebar"
+          onClick={toggleShow}
+        />
+      </div>
+
+    </ul>
+  );
+};
 
 export default Navbar;
