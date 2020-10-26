@@ -60,7 +60,7 @@ const SourceCodeNavItem = () => {
 const PoolsHeader = () => (
   <a className="sidebar-brand d-flex align-items-center justify-content-center" href={process.env.PUBLIC_URL}>
     <div className="sidebar-brand-icon rotate-n-15">
-      <i className="fas fa-laugh-wink" />
+      <FontAwesomeIcon className="fa-2x" icon="laugh-wink" />
     </div>
     <div className="sidebar-brand-text mx-3">
       Pools
@@ -100,10 +100,11 @@ const ChangelogLi = () => (
 const Navbar = () => {
   const [show, setShow] = useState(false);
   const toggleShow = () => setShow(!show);
-  const divClass = show ? 'toggled' : '';
+  const ulDivClass = show ? 'toggled' : '';
+  const rightLeft = show ? 'right' : 'left';
 
   return (
-    <ul className={`navbar-nav bg-gradient-primary sidebar sidebar-dark accordion ${divClass}`} id="accordionSidebar">
+    <ul className={`navbar-nav bg-gradient-primary sidebar sidebar-dark accordion ${ulDivClass}`} id="accordionSidebar">
       <PoolsHeader />
       <hr className="sidebar-divider my-0" />
       <DashboardLi />
@@ -123,13 +124,14 @@ const Navbar = () => {
       <hr className="sidebar-divider d-none d-md-block" />
 
       <div className="text-center d-none d-md-inline">
-        <button
-          className="rounded-circle border-0"
-          id="sidebarToggle"
+        <Button
           type="button"
           aria-label="Toggle sidebar"
+          className="rounded-circle"
           onClick={toggleShow}
-        />
+        >
+          <FontAwesomeIcon className="fa-fw fa-align-center" icon={`angle-${rightLeft}`} />
+        </Button>
       </div>
 
     </ul>
