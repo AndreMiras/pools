@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Line } from 'react-chartjs-2';
+import { Col, Row } from 'react-bootstrap';
 import Title from './Title';
 
 const DatePrice = PropTypes.shape({
@@ -56,7 +57,11 @@ LineChart.propTypes = DatePriceList;
 const Pool = ({ pairsDaily }) => (
   <>
     <Title title={`Pair ${pairsDaily.pair.symbol} $${pairsDaily.pair.price_usd.toFixed(2)}`} />
-    <LineChart datePrice={pairsDaily.date_price} />
+    <Row>
+      <Col xs={10}>
+        <LineChart datePrice={pairsDaily.date_price} />
+      </Col>
+    </Row>
   </>
 );
 Pool.propTypes = PoolPropTypes;
