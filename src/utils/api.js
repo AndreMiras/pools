@@ -2,6 +2,7 @@ const apiRootURL = 'https://pools-api.herokuapp.com';
 const portfolioUrl = (address) => (`${apiRootURL}/portfolio/${address}`);
 const tokensDailyUrl = (address) => (`${apiRootURL}/tokens/${address}/daily`);
 const pairsDailyUrl = (address) => (`${apiRootURL}/pairs/${address}/daily`);
+const pairsUrl = `${apiRootURL}/pairs`;
 
 const fetchFromAPI = (url, onOk, onNotOk) => {
   fetch(url)
@@ -28,6 +29,16 @@ const fetchPairsDaily = (address, onOk, onNotOk) => (
   fetchFromAPI(pairsDailyUrl(address), onOk, onNotOk)
 );
 
+const fetchPairs = (onOk, onNotOk) => (
+  fetchFromAPI(pairsUrl, onOk, onNotOk)
+);
+
 export {
-  portfolioUrl, tokensDailyUrl, pairsDailyUrl, fetchPortfolio, fetchTokensDaily, fetchPairsDaily,
+  portfolioUrl,
+  tokensDailyUrl,
+  pairsDailyUrl,
+  fetchPortfolio,
+  fetchTokensDaily,
+  fetchPairsDaily,
+  fetchPairs,
 };

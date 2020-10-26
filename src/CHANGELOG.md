@@ -3,6 +3,7 @@
 
 ## [Unreleased]
   - Pair price chart page, refs #9
+  - List top pools
 
 ## [2020.10.24]
   - Autodeploy on merge, refs #1

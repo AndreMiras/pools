@@ -4,22 +4,7 @@ import { Button } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import { PairDictPropTypes } from './CommonPropTypes';
 import PairDetails from './PairDetails';
-
-const EtherscanTokenLink = ({ text, tokenAddress, ownerAddress }) => {
-  const holderSuffix = ownerAddress ? `?a=${ownerAddress}` : '';
-  const url = `https://etherscan.io/token/${tokenAddress}${holderSuffix}`;
-  return (
-    <a href={url}>{ text }</a>
-  );
-};
-EtherscanTokenLink.propTypes = {
-  text: PropTypes.string.isRequired,
-  tokenAddress: PropTypes.string.isRequired,
-  ownerAddress: PropTypes.string,
-};
-EtherscanTokenLink.defaultProps = {
-  ownerAddress: null,
-};
+import EtherscanTokenLink from './common/EtherscanTokenLink';
 
 const PairDetailsLink = ({ onClick }) => (
   <Button type="link" onClick={onClick}>Details</Button>
