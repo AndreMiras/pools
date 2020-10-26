@@ -35,7 +35,7 @@ const DoughnutChart = ({ dataDict }) => {
     (pairDict) => Math.round(100 * pairDict.balance_usd / balance),
   );
   const labels = dataDict.pairs.map(
-    (pairDict) => pairDict.pair_symbol,
+    (pairDict) => pairDict.symbol,
   );
   const data = {
     labels,

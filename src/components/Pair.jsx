@@ -36,7 +36,7 @@ const Pair = ({ address, pairDict }) => {
   return (
     <tr>
       <td>
-        <EtherscanTokenLink text={pairDict.pair_symbol} tokenAddress={pairDict.contract_address} />
+        <EtherscanTokenLink text={pairDict.symbol} tokenAddress={pairDict.contract_address} />
       </td>
       <td>
         <EtherscanTokenLink
@@ -48,7 +48,7 @@ const Pair = ({ address, pairDict }) => {
       <td>
         <Link to={`/pairs/${pairDict.contract_address}`}>
           $
-          { pairDict.token_price.toFixed(decimalPlace) }
+          { pairDict.price_usd.toFixed(decimalPlace) }
         </Link>
       </td>
       <td>

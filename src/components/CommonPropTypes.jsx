@@ -18,7 +18,8 @@ const TransactionPropTypes = {
 const PairDictPropTypes = {
   contract_address: PropTypes.string.isRequired,
   owner_balance: PropTypes.number.isRequired,
-  pair_symbol: PropTypes.string.isRequired,
+  price_usd: PropTypes.number.isRequired,
+  symbol: PropTypes.string.isRequired,
   share: PropTypes.number.isRequired,
   balance_usd: PropTypes.number.isRequired,
   tokens: PropTypes.arrayOf(PropTypes.shape(TokenPropTypes).isRequired).isRequired,
