@@ -1,7 +1,7 @@
 # Change Log
 
 
-## [Unreleased]
+## [2020.10.26]
   - Pair price chart page, refs #9
   - List top pools
 
