@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { Table } from 'react-bootstrap';
-import EtherscanTokenLink from '../common/EtherscanTokenLink';
+import EtherscanTokenLink from '../core/EtherscanTokenLink';
 
 const PairPropTypes = {
   pairDict: PropTypes.shape({

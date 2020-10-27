@@ -4,7 +4,7 @@ import { Button } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import { PairDictPropTypes } from './CommonPropTypes';
 import PairDetails from './PairDetails';
-import EtherscanTokenLink from './common/EtherscanTokenLink';
+import EtherscanTokenLink from './core/EtherscanTokenLink';
 
 const PairDetailsLink = ({ onClick }) => (
   <Button type="link" onClick={onClick}>Details</Button>

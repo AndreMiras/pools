@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { Spinner } from 'react-bootstrap';
 import { fetchPairsDaily } from '../utils/api';
-import ErrorDialog from './ErrorDialog';
+import ErrorDialog from './core/ErrorDialog';
 import Pool from './Pool';
 
 const PoolController = () => {

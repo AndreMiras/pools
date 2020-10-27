@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Line } from 'react-chartjs-2';
 import { Col, Row } from 'react-bootstrap';
-import Title from './Title';
+import Title from './core/Title';
 
 const DatePrice = PropTypes.shape({
   date: PropTypes.string.isRequired,

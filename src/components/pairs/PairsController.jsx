@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Spinner } from 'react-bootstrap';
 import { fetchPairs } from '../../utils/api';
-import ErrorDialog from '../ErrorDialog';
+import ErrorDialog from '../core/ErrorDialog';
 import Pairs from './Pairs';
 
 const PairsController = () => {
