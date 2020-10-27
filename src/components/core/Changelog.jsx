@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import ReactMarkdown from 'react-markdown';
-import changelogPath from '../CHANGELOG.md';
+import changelogPath from '../../CHANGELOG.md';
 
 const Changelog = () => {
   const [markdown, setMarkdown] = useState();

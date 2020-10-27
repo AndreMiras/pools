@@ -1,37 +1,37 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { Spinner } from 'react-bootstrap';
-import { fetchPortfolio } from '../utils/api';
-import ErrorDialog from './core/ErrorDialog';
-import Portfolio from './Portfolio';
+import { fetchPairsDaily } from '../../utils/api';
+import ErrorDialog from '../core/ErrorDialog';
+import Pool from './Pool';
 
-const PortfolioController = () => {
+const PoolController = () => {
   const { address } = useParams();
-  const [dataDict, setDataDict] = useState(null);
+  const [pairsDaily, setPairsDaily] = useState(null);
   const [errorDetail, setErrorDetail] = useState(null);
   const onOk = (data) => {
     setErrorDetail(null);
-    setDataDict(data);
+    setPairsDaily(data);
   };
   const errorDialog = errorDetail ? (
     <ErrorDialog
       detail={errorDetail.detail}
     />
   ) : null;
-  const portfolio = dataDict ? <Portfolio dataDict={dataDict} /> : null;
-  const spinner = !(dataDict || errorDetail) ? <Spinner animation="border" /> : null;
+  const pool = pairsDaily ? <Pool pairsDaily={pairsDaily} /> : null;
+  const spinner = !(pairsDaily || errorDetail) ? <Spinner animation="border" /> : null;
   useEffect(() => {
     setErrorDetail(null);
-    setDataDict(null);
-    fetchPortfolio(address, onOk, setErrorDetail);
+    setPairsDaily(null);
+    fetchPairsDaily(address, onOk, setErrorDetail);
   }, [address]);
   return (
     <>
       {errorDialog}
       {spinner}
-      {portfolio}
+      {pool}
     </>
   );
 };
 
-export default PortfolioController;
+export default PoolController;

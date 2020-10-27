@@ -7,8 +7,8 @@ import {
 } from 'react-bootstrap';
 import { Doughnut } from 'react-chartjs-2';
 import Pairs from './Pairs';
-import Title from './core/Title';
-import { portfolioUrl } from '../utils/api';
+import Title from '../core/Title';
+import { portfolioUrl } from '../../utils/api';
 
 const PortfolioPropTypes = {
   dataDict: PropTypes.shape({
