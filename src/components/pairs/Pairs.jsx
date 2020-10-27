@@ -9,6 +9,7 @@ const PairPropTypes = {
     id: PropTypes.string.isRequired,
     symbol: PropTypes.string.isRequired,
     price_usd: PropTypes.number.isRequired,
+    reserve_usd: PropTypes.number.isRequired,
   }).isRequired,
 };
 const Pair = ({ pairDict }) => {
@@ -25,7 +26,8 @@ const Pair = ({ pairDict }) => {
         </Link>
       </td>
       <td>
-        TODO
+        $
+        {pairDict.reserve_usd.toFixed(0)}
       </td>
     </tr>
   );

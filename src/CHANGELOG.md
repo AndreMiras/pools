@@ -2,7 +2,8 @@
 
 
 ## [Unreleased]
-  - Reorganises components to subfolders
+  - Reorganise components to subfolders
+  - Display pair market cap
 
 
 ## [2020.10.26]
