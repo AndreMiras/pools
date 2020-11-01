@@ -4,6 +4,7 @@
 ## [Unreleased]
   - Reorganise components to subfolders
   - Display pair market cap
+  - Pools list view, refs #11
 
 
 ## [2020.10.26]
