@@ -4,6 +4,7 @@
 ## [Unreleased]
   - Reorganise components to subfolders
   - Display pair market cap
+  - Setup Sentry, refs #5
   - Pools list view, refs #11
 
 

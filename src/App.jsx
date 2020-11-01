@@ -6,8 +6,10 @@ import { fas } from '@fortawesome/free-solid-svg-icons';
 import { HashRouter as Router } from 'react-router-dom';
 import Navbar from './components/core/Navbar';
 import ContentWrapper from './components/core/ContentWrapper';
+import setupSentry from './utils/sentry';
 
 library.add(fas);
+setupSentry();
 
 const App = () => (
   <Router>
