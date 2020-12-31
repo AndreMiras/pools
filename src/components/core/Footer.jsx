@@ -6,7 +6,7 @@ const Footer = () => (
     <div className="container my-auto">
       <div className="copyright text-center my-auto">
         <span>
-          Copyright © Andre Miras 2020 - Pools v
+          Copyright &copy; Andre Miras 2020 - Pools v
           {version}
         </span>
       </div>
